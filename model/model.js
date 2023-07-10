@@ -26,6 +26,7 @@ const userSchema = new mongoose.Schema({
   walletAddress: {
     type: String
   }
+  
 })
 
 const albumSchema = new mongoose.Schema({
@@ -34,10 +35,10 @@ const albumSchema = new mongoose.Schema({
     required: true
   },
 
-  createdAt: {
-    type: Date,
-    default:  Date.now
-  },
+  // createdAt: {
+  //   type: Date,
+  //   default:  Date.now
+  // },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"

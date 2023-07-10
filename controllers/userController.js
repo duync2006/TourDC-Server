@@ -18,11 +18,10 @@ const userController = {
       const users = await User.find();
       res.status(200).json(users);
     } catch (error) {
-      res.status(500).json(err);
+      res.status(500).json(error);
     }
   },
 };
-
 
 
 module.exports = userController;

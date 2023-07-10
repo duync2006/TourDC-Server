@@ -5,17 +5,12 @@ const router = require("express").Router();
 
 const albumController = {
   addAlbum: async(req, res) => {
-    res.status(200).json(req.body);
     try {
       const newAlbum = new Album(req.body);
-      const saveAlbum = await newAlbum.save();
-      if(req.body.user) {
-        const user = User.findById(req.body.user);
-        await user.updateOne({$push: {users: saveAlbum._id} });
-      }
-      res.status(200).json(saveAlbum);
+      const savedAlbum = await newAlbum.save();
+      res.status(200).json(savedAlbum);
     } catch (error) {
-      res.status(500).json(err)
+      res.status(500).json(error)
     }
   }
 }
