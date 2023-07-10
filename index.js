@@ -7,6 +7,7 @@ const morgan = require("morgan");
 const dotenv = require("dotenv");
 const userRoute = require("./routes/user")
 const albumRoute = require("./routes/album")
+const placeRoute = require("./routes/place")
 dotenv.config();
 //CONNECT TO DATABASE
 mongoose.connect(process.env.MONGODB_URL)
@@ -25,7 +26,7 @@ app.get("/api", (req,res) => {
 
 app.use("/v1/user", userRoute);
 app.use("/v1/album", albumRoute);
-
+app.use("/v1/place", placeRoute)
 app.listen(8000, () => {
   console.log("Server is running...")
 })
