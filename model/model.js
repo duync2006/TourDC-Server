@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   avatar: {
-    type: String, 
+    type: String,
   },
   walletAddress: {
     type: String
@@ -30,8 +30,8 @@ const userSchema = new mongoose.Schema({
 })
 
 const albumSchema = new mongoose.Schema({
-  name:{
-    type: String, 
+  name: {
+    type: String,
     required: true
   },
 
@@ -47,22 +47,25 @@ const albumSchema = new mongoose.Schema({
 
 const placeSchema = new mongoose.Schema({
   name: {
-    type: String, 
+    type: String,
     required: true
   },
-  
-  description: {
-    type: String, 
-  },
 
-  referPlaces: {
-    type: [String]
+  description: {
+    type: String,
   },
+  referPlaces: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Place'
+  }],
   thumbnail: {
     type: String,
   },
+  intro: {
+    type: String,
+  },
   address: {
-    type: String
+    type: String,
   }
 })
 
@@ -70,4 +73,4 @@ let User = mongoose.model("User", userSchema);
 let Author = mongoose.model("Album", albumSchema);
 let Place = mongoose.model('Place', placeSchema);
 
-module.exports = {User, Author, Place};
+module.exports = { User, Author, Place };
